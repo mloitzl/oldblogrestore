@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - image: arm64v8/phpmyadmin
+        name: phpmyadmin
+        ports:
+         - containerPort: 80
+        env:
+          # Use secret in real usage
+         - name: MYSQL_ROOT_PASSWORD
+           value: password
+         - name: PMA_HOST
+           value: mariadb
+         - name: PMA_PORT
+           value: "3306"

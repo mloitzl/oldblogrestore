@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+
+resources:
+- mariadb-deployment.yml
+- mariadb-pvc.yml
+- mariadb-service.yml
+- namespace.yml
+- nfs-provisioner-deployment.yml
+- nfs-provisioner-rbac.yml
+- phpmyadmin-deployment.yml
+- phpmyadmin-service.yml
+- wordpress-deployment.yml
+- wordpress-service.yml
+- wordpress-pvc.yml
